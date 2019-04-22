@@ -48,52 +48,42 @@ Diseased Images in our dataset:
 
 We first clean the data so that it can be feed to a machine learning model. 
 
-1-  Dataset consists of RGB color images where each channel has value between 0-255, we first convert the each pixelt value between 0 and 1. 
-2-  Each image is of different dimension so to have fix input dimesion we convert the image into 160 x 160 dimension (please note we have tested difference dimensions like 150 x 150, 224 x 224 but got better results on 160 x 160).
+-   Dataset consists of RGB color images where each channel has value between 0-255, we first convert the each pixelt value between 0 and 1. 
+-   Each image is of different dimension so to have fix input dimesion we convert the image into 160 x 160 dimension (please note we have tested difference dimensions like 150 x 150, 224 x 224 but got better results on 160 x 160).
+-   we follow tutoral of [Load images with tf.data](https://www.tensorflow.org/alpha/tutorials/load_data/images#build_a_tfdatadataset), to creat  dataset api for feeding the data to neural network.
+-   We created 3 datasets one for training, one for valid and one for testing. The data distribution is of 75%, 15% and 10% respectivity.
+-   For training data we use 64 batch size with shuffle and repeat, whereas for validation the batch size is of 32 and we didn't use shuffle and repeat because there is no need to shuffle the validation data, similarly for test dataset we use batch size of 1 wihtout shuffle and repeat. 
 
-3- By following tutoral of [Load images with tf.data](https://www.tensorflow.org/alpha/tutorials/load_data/images#build_a_tfdatadataset), we created our dataset api to feed the data to neural network.
-4- We created 3 datasets one for training, one for valid and one for testing. The data distribution is of 75%, 15% and 10% respectivity.
-5- For training data we use 64 batch size with shuffle and repeat, whereas for validation the batch size is of 32 and we didn't use shuffle and repeat because there is no need to shuffle the validation data, similarly for test dataset we use batch size of 1 wihtout shuffle and repeat. 
+### Model Design and Training
 
-5- ### Model Design and Training
+we have tested different architecture of convolution neural network with different hyper parameters. We acheived best results on Vgg16 pretained model with fune tunning on last two convolutional layers. Below is the architecutre of our model
+
+-   We use Vgg16 model, wihtout top included, pretained on imagenet followed by with two dense layers each having 512 units with Dropout of 50% between them.
+-   Each dense layer has relu activation function follow by 1 output dense layer with sigmoid activation function.
+-   For loss we use binary_crossentropy and for optimizer we use Adam with learning rate 0.00001
+-   For model callback we use early stop to save only best model which have lowest validation loss and Reduce learning rate if there is no variation in the validation loss.
+-   The model was trained on train dataset and after each epcoh the model is tested against validation dataset. 
+-   Model only trained the parameter of last 2 dense layer and convolutional layer parameter was kept freeze.
+-   Once model is trained we finetuned the model by setting last 2 convolutional layer trainable and retrained the model on training data. 
+-   In fine tuning we used lower value of learning rate as compare to first training.
+
+Below is the screenshot of code snippet of model design
+
+![](misc/vgg16.png)
+
+We have also tested different architecutre design with different parameters, some are mentioned below
+
+-   Simple convolutional neural network with 3 Conv2D layer with 2 Dense layer.
+-   A Separable convolution neural network with 4 SeparableConv2D follow by 2 Dense layer.
+-   Pretained version of Vgg16, Vgg19, inception, Xception, mobileNet, DenseCNN and ResNet on imagenet dataset and also on random intialization. We have seen that on DenseCNN and ResNet the model perform very badly where as on Inception and Xception we receive fair accuracy. On MobileNet in pretained version the model had bad accuracy (less than 70%) but on random initialization of weight with trainable True model perform good as compare to Inception and Xception.
+
+### Validation and Test Loss/Accuracy
+
+- 
 
 
-
-### Use
-
-#### Export your Tensorflow model
-
-In order to serve a Tensorflow model, simply export a SavedModel from your
-Tensorflow program.
-[SavedModel](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/README.md)
-is a language-neutral, recoverable, hermetic serialization format that enables
-higher-level systems and tools to produce, consume, and transform TensorFlow
-models.
-
-Please refer to [Tensorflow documentation](https://www.tensorflow.org/guide/saved_model#save_and_restore_models)
-for detailed instructions on how to export SavedModels.
-
-#### Configure and Use Tensorflow Serving
-
-* [Follow a tutorial on Serving Tensorflow models](tensorflow_serving/g3doc/serving_basic.md)
-* Read the [REST API Guide](tensorflow_serving/g3doc/api_rest.md) or [gRPC API definition](https://github.com/tensorflow/serving/tree/master/tensorflow_serving/apis)
-* [Use SavedModel Warmup if initial inference requests are slow due to lazy initialization of graph](tensorflow_serving/g3doc/saved_model_warmup.md)
-* [Configure models, version and version policy via Serving Config](tensorflow_serving/g3doc/serving_config.md)
-* [If encountering issues regarding model signatures, please read the SignatureDef documentation](tensorflow_serving/g3doc/signature_defs.md)
-
-### Extend
-
-Tensorflow Serving's architecture is highly modular. You can use some parts
-individually (e.g. batch scheduling) and/or extend it to serve new use cases.
-
-* [Ensure you are familiar with building Tensorflow Serving](tensorflow_serving/g3doc/building_with_docker.md)
-* [Learn about Tensorflow Serving's architecture](tensorflow_serving/g3doc/architecture.md)
-* [Explore the Tensorflow Serving C++ API reference](https://www.tensorflow.org/tfx/serving/api_docs/cc/)
-* [Create a new type of Servable](tensorflow_serving/g3doc/custom_servable.md)
-* [Create a custom Source of Servable versions](tensorflow_serving/g3doc/custom_source.md)
 
 ## Contribute
-
 
 **If you'd like to contribute to TensorFlow Serving, be sure to review the
 [contribution guidelines](CONTRIBUTING.md).**
