@@ -1,59 +1,32 @@
-# TensorFlow Serving
-
-[![Ubuntu Build Status](https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges/ubuntu.svg)](https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges/ubuntu.html)
-[![Ubuntu Build Status at TF HEAD](https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges/ubuntu-tf-head.svg)](https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges/ubuntu-tf-head.html)
-![Docker CPU Nightly Build Status](https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges/docker-cpu-nightly.svg)
-![Docker GPU Nightly Build Status](https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges/docker-gpu-nightly.svg)
+# Plant Classification in Healthy and Disease
 
 ----
-TensorFlow Serving is a flexible, high-performance serving system for
-machine learning models, designed for production environments. It deals with
-the *inference* aspect of machine learning, taking models after *training* and
-managing their lifetimes, providing clients with versioned access via
-a high-performance, reference-counted lookup table.
-TensorFlow Serving provides out-of-the-box integration with TensorFlow models,
-but can be easily extended to serve other types of models and data.
 
-To note a few features:
+## Problem Statement & Introduction
 
--   Can serve multiple models, or multiple versions of the same model
-    simultaneously
--   Exposes both gRPC as well as HTTP inference endpoints
--   Allows deployment of new model versions without changing any client code
--   Supports canarying new versions and A/B testing experimental models
--   Adds minimal latency to inference time due to efficient, low-overhead
-    implementation
--   Features a scheduler that groups individual inference requests into batches
-    for joint execution on GPU, with configurable latency controls
--   Supports many *servables*: Tensorflow models, embeddings, vocabularies,
-    feature transformations and even non-Tensorflow-based machine learning
-    models
+In our work we target the Indoor farming. Indoor farming is a method of growing crops or plants, entirely indoors. This method of farming often implements growing methods such as hydroponics and utilizes artificial lights to provide plants with the nutrients and light levels required for growth. A wide variety of plants can be grown indoors, but fruits, vegetables, and herbs are the most popular. Some of the most popular plants grown indoors are usually crop plants like lettuce, tomatoes, peppers, and herbs.
 
-## Serve a Tensorflow model in 60 seconds
-```bash
-# Download the TensorFlow Serving Docker image and repo
-docker pull tensorflow/serving
+When growing indoors, many indoor farmers appreciate having more control over the environment than they do when they are using traditional farming methods. Light amounts, nutrition levels, and moisture levels can all be controlled by the farmer when they are growing crops solely indoors. They also need a system that monitor the health of a plant and generate alerts if a plant got a disease. The system need to be automatic which captures the real time images of plants at various angels and then classify it with either healthy or diease and provide a mitigation to redeuce the disease effect.
 
-git clone https://github.com/tensorflow/serving
-# Location of demo models
-TESTDATA="$(pwd)/serving/tensorflow_serving/servables/tensorflow/testdata"
+Keep this thing in mind we have gathered the data of different plants of both category healthy and disease. I would like to thanks Pam Loreto which provides the data of these categories. 
 
-# Start TensorFlow Serving container and open the REST API port
-docker run -t --rm -p 8501:8501 \
-    -v "$TESTDATA/saved_model_half_plus_two_cpu:/models/half_plus_two" \
-    -e MODEL_NAME=half_plus_two \
-    tensorflow/serving &
+The data consists of following plants:
 
-# Query the model using the predict API
-curl -d '{"instances": [1.0, 2.0, 5.0]}' \
-    -X POST http://localhost:8501/v1/models/half_plus_two:predict
+-   Basil
+-   Kale
+-   Lettuce
+-   Mint
+-   Coriander
+-   Parsley
 
-# Returns => { "predictions": [2.5, 3.0, 4.5] }
-```
+## Solution
 
-## End-to-End Training & Serving Tutorial
+We developed a machine learning model in Tensorflow 2.0 using keras API which classify the plant image into either healthy or disease. The problem is a binary problem in which we have to calssify an image either healthy (1) or diseased (0).
 
-Refer to the official Tensorflow documentations site for [a complete tutorial to train and serve a Tensorflow Model](https://www.tensorflow.org/tfx/tutorials/serving/rest_simple).
+
+## Technicallity
+
+### Data exploration
 
 
 ## Documentation
