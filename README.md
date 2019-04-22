@@ -16,7 +16,7 @@ Keep this thing in mind we have gathered the data of different plants of both ca
 We developed a machine learning model in Tensorflow 2.0 using keras API which classify the plant image into either healthy or disease. The problem is a binary problem in which we have to calssify an image either healthy (1) or diseased (0).
 
 
-## Technicallity
+## Technicality
 
 ### Data exploration
 
@@ -31,27 +31,33 @@ The data consists of following plants:
 
 There are total 3374 images in the data set in which 1943 images are of cateogry diseased  and 1431 images are of category healthy. The size of each image is different so the image dimension. Most of the images are in jpeg but also contains some images in .png and gif.
 
-There is another dataset for plant disease classification [PlantVillage Disease Classification Challenge](https://www.crowdai.org/challenges/plantvillage-disease-classification-challenge). The main difference between PlantVillage and our dataset is that we have riched images unlike PlantVillage in which there are only images of leaves not whole plants. In real world it is very difficult and costly for the system to capture the images of each leaf seperately classify into healthy and diseased.  
+There is another dataset for plant disease classification [PlantVillage Disease Classification Challenge](https://www.crowdai.org/challenges/plantvillage-disease-classification-challenge). The main difference between PlantVillage and our dataset is that we have riched images unlike PlantVillage in which there are only images of leaves not whole plants. In real world it is very difficult and costly for the system to capture the images of each leaf seperately and classify them into healthy and diseased.  
 
 You can see some examples of both datasets. 
 
 PlantVillage
 ![](mics/plantvillage-min.png);
 
-## Documentation
+Healthy Images in our dataset:
+![](mics/healthy_images);
 
-### Set up
+Diseased Images in our dataset:
+![](mics/disease_images);
 
-The easiest and most straight-forward way of using TensorFlow Serving is with
-Docker images. We highly recommend this route unless you have specific needs
-that are not addressed by running in a container.
+### Data Cleaning and Prepration
 
-*   [Install Tensorflow Serving using Docker](tensorflow_serving/g3doc/docker.md)
-    *(Recommended)*
-*   [Install Tensorflow Serving without Docker](tensorflow_serving/g3doc/setup.md)
-    *(Not Recommended)*
-*   [Build Tensorflow Serving from Source with Docker](tensorflow_serving/g3doc/building_with_docker.md)
-*   [Deploy Tensorflow Serving on Kubernetes](tensorflow_serving/g3doc/serving_kubernetes.md)
+We first clean the data so that it can be feed to a machine learning model. 
+
+1-  Dataset consists of RGB color images where each channel has value between 0-255, we first convert the each pixelt value between 0 and 1. 
+2-  Each image is of different dimension so to have fix input dimesion we convert the image into 160 x 160 dimension (please note we have tested difference dimensions like 150 x 150, 224 x 224 but got better results on 160 x 160).
+
+3- By following tutoral of [Load images with tf.data](https://www.tensorflow.org/alpha/tutorials/load_data/images#build_a_tfdatadataset), we created our dataset api to feed the data to neural network.
+4- We created 3 datasets one for training, one for valid and one for testing. The data distribution is of 75%, 15% and 10% respectivity.
+5- For training data we use 64 batch size with shuffle and repeat, whereas for validation the batch size is of 32 and we didn't use shuffle and repeat because there is no need to shuffle the validation data, similarly for test dataset we use batch size of 1 wihtout shuffle and repeat. 
+
+5- ### Model Design and Training
+
+
 
 ### Use
 
