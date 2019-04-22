@@ -36,13 +36,13 @@ There is another dataset for plant disease classification [PlantVillage Disease 
 You can see some examples of both datasets. 
 
 PlantVillage
-![](mics/plantvillage-min.png)
+![](misc/plantvillage-min.png)
 
 Healthy Images in our dataset:
-![](mics/healthy_images.png)
+![](misc/healthy_images.png)
 
 Diseased Images in our dataset:
-![](mics/disease_images.png)
+![](misc/disease_images.png)
 
 ### Data Cleaning and Prepration
 
