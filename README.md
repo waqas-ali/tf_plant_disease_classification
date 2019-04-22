@@ -39,10 +39,10 @@ PlantVillage
 ![](mics/plantvillage-min.png)
 
 Healthy Images in our dataset:
-![](mics/healthy_images.jpg)
+![](mics/healthy_images.png)
 
 Diseased Images in our dataset:
-![](mics/disease_images.jpg)
+![](mics/disease_images.png)
 
 ### Data Cleaning and Prepration
 
