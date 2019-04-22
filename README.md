@@ -10,14 +10,6 @@ When growing indoors, many indoor farmers appreciate having more control over th
 
 Keep this thing in mind we have gathered the data of different plants of both category healthy and disease. I would like to thanks Pam Loreto which provides the data of these categories. 
 
-The data consists of following plants:
-
--   Basil
--   Kale
--   Lettuce
--   Mint
--   Coriander
--   Parsley
 
 ## Solution
 
@@ -28,6 +20,21 @@ We developed a machine learning model in Tensorflow 2.0 using keras API which cl
 
 ### Data exploration
 
+The data consists of following plants:
+
+-   Basil
+-   Kale
+-   Lettuce
+-   Mint
+-   Coriander
+-   Parsley
+
+There are total 3374 images in the data set in which 1943 images are of cateogry diseased  and 1431 images are of category healthy. The size of each image is different so the image dimension. Most of the images are in jpeg but also contains some images in .png and gif.
+
+There is another dataset for plant disease classification [PlantVillage Disease Classification Challenge](https://www.crowdai.org/challenges/plantvillage-disease-classification-challenge). The main difference between PlantVillage and our dataset is that we have riched images unlike PlantVillage in which there are only images of leaves not whole plants. In real world it is very difficult and costly for the system to capture the images of each leaf seperately classify into healthy and diseased.  
+
+You can see some examples of both datasets. 
+![PlantVillage](mics/plantvillage-min.png);
 
 ## Documentation
 
