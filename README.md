@@ -34,7 +34,9 @@ There are total 3374 images in the data set in which 1943 images are of cateogry
 There is another dataset for plant disease classification [PlantVillage Disease Classification Challenge](https://www.crowdai.org/challenges/plantvillage-disease-classification-challenge). The main difference between PlantVillage and our dataset is that we have riched images unlike PlantVillage in which there are only images of leaves not whole plants. In real world it is very difficult and costly for the system to capture the images of each leaf seperately classify into healthy and diseased.  
 
 You can see some examples of both datasets. 
-![PlantVillage](mics/plantvillage-min.png);
+
+PlantVillage
+![](mics/plantvillage-min.png);
 
 ## Documentation
 
