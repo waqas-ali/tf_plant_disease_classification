@@ -75,11 +75,12 @@ We have also tested different architecutre design with different parameters, som
 
 -   Simple convolutional neural network with 3 Conv2D layer with 2 Dense layer.
 -   A Separable convolution neural network with 4 SeparableConv2D follow by 2 Dense layer.
--   Pretained version of Vgg16, Vgg19, inception, Xception, mobileNet, DenseCNN and ResNet on imagenet dataset and also on random intialization. We have seen that on DenseCNN and ResNet the model perform very badly where as on Inception and Xception we receive fair accuracy. On MobileNet in pretained version the model had bad accuracy (less than 70%) but on random initialization of weight with trainable True model perform good as compare to Inception and Xception.
+-   Pretained version of Vgg16, Vgg19, inception, Xception, MobileNet, DenseCNN and ResNet on imagenet dataset. We have seen that on DenseCNN and ResNet the model perform very badly where as on MobileNet, Inception and Xception we get fair accuracy. Vgg19 performed better than other models except Vgg16
+-   Random initialization of weights of pretained version of Vgg16, Vgg19, inception, Xception, mobileNet, DenseCNN and ResNet.We have seen on MobileNet the accuracy is much better as compare to other models. It could be because of overfitting.
 
 ### Validation and Test Loss/Accuracy
 
-- 
+- We used 15% data for validation and 10% data for test.  
 
 
 
