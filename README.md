@@ -77,6 +77,7 @@ We have also tested different architecutre design with different parameters, som
 -   A Separable convolution neural network with 4 SeparableConv2D follow by 2 Dense layer.
 -   Pretained version of Vgg16, Vgg19, inception, Xception, MobileNet, DenseCNN and ResNet on imagenet dataset. We have seen that on DenseCNN and ResNet the model perform very badly where as on MobileNet, Inception and Xception we get fair accuracy. Vgg19 performed better than other models except Vgg16
 -   Random initialization of weights of pretained version of Vgg16, Vgg19, inception, Xception, mobileNet, DenseCNN and ResNet.We have seen on MobileNet the accuracy is much better as compare to other models. It could be because of overfitting.
+-   We also use ImageDataGenerator API of keras for data augmentation but didn't see any significant difference in loss and accuracy.
 
 ### Validation and Test Loss/Accuracy
 
