@@ -89,14 +89,14 @@ We have also tested different architecutre design with different parameters, som
 ![](misc/test_report.png)
 
 
+## Future Work
+- Currently we just solve one problem in which we just classify the plant into diseased and healthy, the work can be extended to identify the disease type along with plant type. In this way the system could provide better suggestions for disease mitigation.
 
-## Contribute
+## Acknowledgement
 
-**If you'd like to contribute to TensorFlow Serving, be sure to review the
-[contribution guidelines](CONTRIBUTING.md).**
-
+- I would like to thanks Pam (pam@kula.ai) for providing the data. She has collected the data over internet.
+- I would like to thanks Ammad Azam (ammadazam@gmail.com) for joining the team, cleaning the data (remove duplicat images etc) and helping in testing different model design.
 
 ## For more information
 
-Please refer to the official [TensorFlow website](http://tensorflow.org) for
-more information.
+Please feel free to contact me Waqas Ali on imwiqiali@gmail.com
