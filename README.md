@@ -80,7 +80,13 @@ We have also tested different architecutre design with different parameters, som
 
 ### Validation and Test Loss/Accuracy
 
-- We used 15% data for validation and 10% data for test.  
+- We used 15% data for validation and 10% data for test. 
+- During training we first set trainable = False of convolutional layers and only trained the dense layer. On this configuration we are able to acheive 0.332 loss and 87% accuracy on validation data. please find below plot of both accuracy and loss of validation with respect to training data.
+![](misc/valid1.png)
+- Once model is trained on dense layers, we then fine tuned the last 2 layers of convolutional and retrained the model with same training and validation data. On this configuration we are able to acheive 0.249 loss and 90% accuracy on validation data. please find below plot of both accuracy and loss of validation with respect to training data.
+![](misc/valid2.png)
+- We saved the best model and tested the model on test dataset. On test dataset we are able to achieve 91% accuracy. below is the screenshot of Precision, Recall and F1 score
+![](misc/test_report.png)
 
 
 
