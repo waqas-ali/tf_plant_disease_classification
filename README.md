@@ -89,6 +89,10 @@ We have also tested different architecutre design with different parameters, som
 - We saved the best model and tested the model on test dataset. On test dataset we are able to achieve 91% accuracy. below is the screenshot of Precision, Recall and F1 score
 ![](misc/test_report.png)
 
+## Code
+- The work is developed using colab, you can view the notebook of the code both in ipynb and html format. kindly look into notebook directory to get the ipynb and html file.
+- We also convert the ipynb to python script, you can find python code in script directory.
+- The notebook provides step by step guide and explain each part of the code in simple english. To understand the code it is good you view the html format of notebook
 
 ## Future Work
 - Currently we just solve one problem in which we just classify the plant into diseased and healthy, the work can be extended to identify the disease type along with plant type. In this way the system could provide better suggestions for disease mitigation.
