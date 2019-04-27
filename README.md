@@ -113,6 +113,12 @@ We have also tested different architecture design with different parameters, som
 - I would like to thanks Pam (pam@kula.ai) for providing the data. She has collected the data over internet.
 - I would like to thanks Ammad Azam (ammadazam@gmail.com) for joining the team, cleaning the data (remove duplicate images etc) and helping in testing different model design.
 
+## References
+https://en.wikipedia.org/wiki/Agriculture#History
+https://en.wikipedia.org/wiki/Vertical_farming
+https://simple.wikipedia.org/wiki/Farming
+https://www.maximumyield.com/definition/2151/indoor-farming
+
 ## For more information
 
 Please feel free to contact me Waqas Ali on imwiqiali@gmail.com
